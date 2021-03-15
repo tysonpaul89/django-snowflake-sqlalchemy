@@ -1,6 +1,6 @@
 # django-snowflake-sqlalchemy
 
-This is an example django application that uses snowflake database with SqlAlchemy library.
+An example Django application that uses snowflake database  using SqlAlchemy library.
 
 ## Project Setup
 
