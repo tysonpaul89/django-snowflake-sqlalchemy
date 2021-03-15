@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    {% block extra_css %}{% endblock extra_css %}
+    <style>
+        .messages li {
+            list-style: none;
+            font-size: larger;
+            text-align: center;
+        }
+
+        .messages li.error {
+            color: red;
+        }
+
+        .messages li.success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% block body %}{% endblock body %}
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

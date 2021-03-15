@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Airport{% endblock title %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block body %}
+    <h1>Edit Airport</h1>
+
+    <form action="{% url 'update_data' airport_id=airport.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock body %}

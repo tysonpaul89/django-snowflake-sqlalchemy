@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Airports{% endblock title %}
+
+{% block extra_css %}
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+{% endblock extra_css %}
+
+{% block body %}
+    <h1>Airports</h1>
+
+    <p><a href="{% url 'create_data' %}">Create Airport data</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for airport in airports %}
+                <tr>
+                    <td>{{airport.name}}</td>
+                    <td>{{airport.airport_code}}</td>
+                    <td>{{airport.location}}</td>
+                    <td>
+                        <a href="{% url 'update_data' airport_id=airport.id %}">Update</a>&nbsp;&nbsp;
+                        <a href="{% url 'delete_data' airport_id=airport.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock body %}
